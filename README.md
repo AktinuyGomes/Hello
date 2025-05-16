@@ -10,3 +10,8 @@ https://parad1st.github.io/Screamer/
 # Исходный код
 Если вы всё таки захотите скачать исходник сайта, то обязательно отмечайте меня! А лучше всего используйте Forks в GitHub, тогда вы автоматически отметите меня и мою работу!
 # Удачного использования ;-)
+
+# Updated
+## Source code
+https://github.com/Parad1st/Screamer
+@autor Parad1st
