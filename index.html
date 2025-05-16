@@ -29,13 +29,12 @@
 </head>
 <body>
 
-<video id="video" src="media/video.mp4" autoplay muted playsinline></video>
+<video id="video" src="media/video.mp4" playsinline preload="auto"></video>
 
 <script>
   const video = document.getElementById("video");
   function startScreamer() {
     video.muted = false;
-    video.play();
 
     const elem = document.documentElement;
     if (elem.requestFullscreen) elem.requestFullscreen();
@@ -43,6 +42,7 @@
     else if (elem.mozRequestFullScreen) elem.mozRequestFullScreen();
     else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
 
+    video.play().catch((e) => console.error("Video play failed", e));
     window.removeEventListener("click", startScreamer);
     window.removeEventListener("keydown", startScreamer);
   }
