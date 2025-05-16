@@ -9,10 +9,27 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background: black;
       height: 100%;
       width: 100%;
+      background: black;
     }
+
+    #overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      color: white;
+      font-family: sans-serif;
+      font-size: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10000;
+    }
+
     video {
       position: fixed;
       top: 0;
@@ -22,6 +39,7 @@
       object-fit: cover;
       z-index: 9999;
     }
+
     video::-webkit-media-controls {
       display: none !important;
     }
@@ -29,26 +47,27 @@
 </head>
 <body>
 
-<video id="video" src="media/video.mp4" playsinline preload="auto"></video>
+<div id="overlay">Click to continue</div>
+<video id="video" src="media/video.mp4" preload="auto" playsinline></video>
 
 <script>
+  const overlay = document.getElementById("overlay");
   const video = document.getElementById("video");
-  function startScreamer() {
+
+  function start() {
+    overlay.style.display = "none";
+
     video.muted = false;
+    video.play().catch(e => console.error("Playback error:", e));
 
-    const elem = document.documentElement;
-    if (elem.requestFullscreen) elem.requestFullscreen();
-    else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
-    else if (elem.mozRequestFullScreen) elem.mozRequestFullScreen();
-    else if (elem.msRequestFullscreen) elem.msRequestFullscreen();
-
-    video.play().catch((e) => console.error("Video play failed", e));
-    window.removeEventListener("click", startScreamer);
-    window.removeEventListener("keydown", startScreamer);
+    const doc = document.documentElement;
+    if (doc.requestFullscreen) doc.requestFullscreen();
+    else if (doc.webkitRequestFullscreen) doc.webkitRequestFullscreen();
+    else if (doc.mozRequestFullScreen) doc.mozRequestFullScreen();
+    else if (doc.msRequestFullscreen) doc.msRequestFullscreen();
   }
 
-  window.addEventListener("click", startScreamer);
-  window.addEventListener("keydown", startScreamer);
+  overlay.addEventListener("click", start);
 </script>
 
 </body>
