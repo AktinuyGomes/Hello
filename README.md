@@ -1,11 +1,11 @@
 ## RU
-## О скримере
+### О скримере
 Это упрощенная версия
-## Авторство
+### Авторство
 Основано на оригинальной работе [Parad1st](https://github.com/Parad1st).
 
 ## EN
-## About
+### About
 This version was simplified.
-## Credits
+### Credits
 Based on the original work by [Parad1st](https://github.com/Parad1st).
